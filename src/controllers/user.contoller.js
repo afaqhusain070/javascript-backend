@@ -5,7 +5,8 @@ import { uploadOnCloudnary } from '../utils/cloudnary'
 import { apiResponse } from '../utils/apiResponse'
 
 const registerUser = asyncHandler( async (req, res) => {
-   const {fullName, email, password}= req.body 
+   const {fullName, email, password,username}= req.body 
+   console.log(fullName,"fullName");
    if ([
     fullName , email, username, password
    ].some((field)=>field?.trim() === "")) {
@@ -38,11 +39,11 @@ const registerUser = asyncHandler( async (req, res) => {
 
  const user =  User.create({
     fullName,
-    avator: avator.url ,
-    coverImage: coverImage.url || "",
+    avator: avator?.url ,
+    coverImage: coverImage?.url || "",
     email,
     password,
-    username: username.toLowerCase()
+    username: username?.toLowerCase()
   })
 
  const createdUser = User.findById(user._id).select("-password -refreshToken")

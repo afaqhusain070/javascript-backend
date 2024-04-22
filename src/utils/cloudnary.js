@@ -16,7 +16,9 @@ cloudinary.config({
             resource_type: "auto"
         })
         //file has been uploaded
-        console.log('file is uploaded on cloudnary', response.url)
+        // console.log('file is uploaded on cloudnary', response.url)
+
+        fs.unlinkSync(localFilePth)
         return response
     } catch (error) {
         fs.unlinkSync(localFilePth)// remove the local file on temporary file as the upload operatoin got fail
