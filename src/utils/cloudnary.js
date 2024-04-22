@@ -23,4 +23,4 @@ cloudinary.config({
         return null
     }
   }
-
+export {uploadOnCloudnary}
