@@ -24,7 +24,12 @@ const registerUser = asyncHandler( async (req, res) => {
     }
 
    const avatorLocalPath =  req.files?.avator[0]?.path;
-   const coverImageLocalPath=req.files?.coverImage[0]?.path;
+   // const coverImageLocalPath=req.files?.coverImage[0]?.path;
+
+   let coverImageLocalPath;
+   if(res.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0 ){
+      coverImageLocalPath = req.files.coverImage[0].path
+   }
 
    if(!avatorLocalPath ){
     throw new apiError(400, "Avator is required!")
