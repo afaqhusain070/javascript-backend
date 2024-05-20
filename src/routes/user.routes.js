@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { registerUser, loginUser, logoutUser , refreshAccessToken, changeCurrentpassword, getCurrentUser, updateUserAvatar, UserUpdateDetail, updateUserCoverImage, getUserChannelProfile, getWatchHistory} from "../controllers/user.contoller";
+import { registerUser, loginUser, logoutUser , refreshAccessToken, changeCurrentpassword, getCurrentUser, updateUserAvatar, UserUpdateDetail, updateUserCoverImage, getUserChannelProfile, getWatchHistory} from "../controllers/user.contoller.js";
 const router = Router()
-import { verifyJWT } from "../middlewares/auth.middleware";
-import { upload } from "../middlewares/multer.middleware";
+import { verifyJWT } from "../middlewares/auth.middleware.js";
+import { upload } from "../middlewares/multer.middleware.js";
 
 router.route("/register").post(
     //  this is middleware for upload file
@@ -19,7 +19,7 @@ router.route("/change-passwrod").post(verifyJWT, changeCurrentpassword)
 router.route("/current-user").get(verifyJWT, getCurrentUser)
 router.route("/update-account").patch(verifyJWT, UserUpdateDetail)
 router.route("/update-avator").patch(verifyJWT, upload.single("avator"), updateUserAvatar)
-router.route("/cover-image").patch(verifyJWT, upload.single("/coverImage"), updateUserCoverImage)
+router.route("/cover-image").patch(verifyJWT, upload.single("coverImage"), updateUserCoverImage)
 router.route("/c/:username").get(verifyJWT, getUserChannelProfile)
 router.route("/history").get(verifyJWT, getWatchHistory)
 
