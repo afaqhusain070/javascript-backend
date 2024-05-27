@@ -3,9 +3,7 @@ import { apiError } from '../utils/apiError'
 import {User} from '../models/user.model.js'
 import { uploadOnCloudnary } from '../utils/cloudnary'
 import { apiResponse } from '../utils/apiResponse.js'
-import jwt from 'jsonwebtoken'
-import { Subsciption } from '../models/subscribation.model.js'
-import { check } from 'prettier'
+import jwt from 'jsonwebtokens'
 import mongoose from 'mongoose'
 
 const generateAccessAndRefereshTokens = async(userId) =>{
